@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.sql.*;
 
 public class LibraryStg23Main {
 
@@ -33,12 +34,14 @@ public class LibraryStg23Main {
             switch (menuEntry) {
                 case 1:
                     // retrieve from Database instead
-//                    library.getTitle();
+                   // library.getTitle();
                     break;
                 case 2:
                     // retrieve from Database instead
 //                library.getAuthor();
+                 //   System.out.println();
                     break;
+
                 case 3:
                     // retrieve from Database instead
 //                library.getGenre();
@@ -48,6 +51,25 @@ public class LibraryStg23Main {
 //                library.getBookList();
                     break;
                 case 5:
+
+                    Books newBook = new Books();
+                    System.out.println("Enter book's title");
+                    newBook.setTitle(scanner.next());
+                    System.out.println("Enter book's author");
+                    newBook.setAuthor(scanner.next());
+                    System.out.println("Enter book's year");
+                    newBook.setYear(scanner.nextInt());
+                    System.out.println("Enter book's publisher");
+                    newBook.setPublisher(scanner.next());
+                    System.out.println("Enter book's language");
+                    newBook.setLanguage(scanner.next());
+                    System.out.println("Enter book's genre");
+                    newBook.setGenreId(scanner.nextInt());
+                    System.out.println("Enter book's availability");
+                    newBook.setAvailabilityId(scanner.nextInt());
+
+                    library.createBook(newBook);
+
                     // Add new book to database
 //                addNewBook(scanner, BookList);
                     break;

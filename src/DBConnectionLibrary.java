@@ -25,7 +25,7 @@ public class DBConnectionLibrary {
                             "year INTEGER NOT NULL, " +
                             "publisher TEXT NOT NULL, " +
                             "language TEXT NOT NULL, " +
-                            "genreId INTEGER NOT NULL, " +
+                            "genreId TEXT NOT NULL, " +
                             "availability INTEGER NOT NULL) ";
 //                            "FOREIGN KEY(Genre_id) REFERENCES Genre(id))";
 
@@ -39,6 +39,15 @@ public class DBConnectionLibrary {
 
             statement.execute(sqlStatement);
             System.out.println("DB Genre created");
+
+            sqlStatement =
+                    "CREATE TABLE IF NOT EXISTS books_genres" +
+                            " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                            "bookId INTEGER NOT NULL, " +
+                            "genreId INTEGER NOT NULL) ";
+
+            statement.execute(sqlStatement);
+            System.out.println("DB books_genres created");
 
         } catch (SQLException exception) {
             System.out.println("Database issues: " + exception.toString());
@@ -65,7 +74,7 @@ public class DBConnectionLibrary {
                 book.setYear( rs.getInt("year"));
                 book.setPublisher( rs.getString("publisher"));
                 book.setLanguage( rs.getString("language"));
-                book.setGenreId( rs.getInt("genreId"));
+                book.setGenreId (rs.getInt("genre"));
                 book.setAvailabilityId( rs.getInt("availability"));
                 System.out.println(book.toString());
             }
@@ -83,7 +92,7 @@ public class DBConnectionLibrary {
 
             Statement statement = conn.createStatement();
             String sqlStatement = "INSERT INTO books (" +
-                    "id, title, author, year, publisher, language, genreId, availability) " +
+                    "id, title, author, year, publisher, language, genre, availability) " +
                     "VALUES (" +
                     "'" + book.getId() + "'," +
                     "'" + book.getTitle() + "'," +
