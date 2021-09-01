@@ -1,21 +1,20 @@
 public class Books {
 
-    private int Id, genreId, year;
-    private String Title, Author, placeId, language, publisher, availability;
+    private int Id, genreId, year, availabilityId;
+    private String Title, Author, language, publisher;
 
     public Books() {
     }
 
-    public Books(int id, int genreId, int year, String title, String author, String placeId, String language, String publisher, String availability) {
-        this.Id = id;
+    public Books(int id, int genreId, int year, int availabilityId, String title, String author, String language, String publisher) {
+        Id = id;
         this.genreId = genreId;
         this.year = year;
-        this.Title = title;
-        this.Author = author;
-        this.placeId = placeId;
+        this.availabilityId = availabilityId;
+        Title = title;
+        Author = author;
         this.language = language;
         this.publisher = publisher;
-        this.availability = availability;
     }
 
     @Override
@@ -24,12 +23,11 @@ public class Books {
                 "Id=" + Id +
                 ", genreId=" + genreId +
                 ", year=" + year +
+                ", availabilityId=" + availabilityId +
                 ", Title='" + Title + '\'' +
                 ", Author='" + Author + '\'' +
-                ", placeId='" + placeId + '\'' +
                 ", language='" + language + '\'' +
                 ", publisher='" + publisher + '\'' +
-                ", availability='" + availability + '\'' +
                 '}';
     }
 
@@ -57,6 +55,14 @@ public class Books {
         this.year = year;
     }
 
+    public int getAvailabilityId() {
+        return availabilityId;
+    }
+
+    public void setAvailabilityId(int availabilityId) {
+        this.availabilityId = availabilityId;
+    }
+
     public String getTitle() {
         return Title;
     }
@@ -71,14 +77,6 @@ public class Books {
 
     public void setAuthor(String author) {
         Author = author;
-    }
-
-    public String getPlaceId() {
-        return placeId;
-    }
-
-    public void setPlaceId(String placeId) {
-        this.placeId = placeId;
     }
 
     public String getLanguage() {
@@ -96,12 +94,9 @@ public class Books {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
-    public String getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(String availability) {
-        this.availability = availability;
-    }
 }
+
+
+
+
+
