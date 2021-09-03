@@ -5,6 +5,12 @@ public class LibraryStg23Main {
 
     private static DBConnectionLibrary library;
 
+    private String readString()
+    {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
     public static void main(String[] args) {
 
         library = new DBConnectionLibrary();
@@ -14,6 +20,7 @@ public class LibraryStg23Main {
 //    static private void showMenu(String[] bookList) {
         int menuEntry;
         Scanner scanner = new Scanner(System.in);
+
 
         do {
             System.out.println("Welcome!");

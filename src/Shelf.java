@@ -1,2 +1,3 @@
-public class Shelf {
+public class Shelf extends Availability{
+
 }
