@@ -63,7 +63,7 @@ public class LibraryStg23Main {
                     newBook.setPublisher(scanner.next());
                     System.out.println("Enter book's language");
                     newBook.setLanguage(scanner.next());
-                    System.out.println("Enter book's genre");
+                    System.out.println("Enter book's genreId");
                     newBook.setGenreId(scanner.nextInt());
                     System.out.println("Enter book's availability");
                     newBook.setAvailabilityId(scanner.nextInt());

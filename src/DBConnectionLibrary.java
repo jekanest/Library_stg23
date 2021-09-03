@@ -26,8 +26,8 @@ public class DBConnectionLibrary {
                             "publisher TEXT NOT NULL, " +
                             "language TEXT NOT NULL, " +
                             "genreId TEXT NOT NULL, " +
-                            "availability INTEGER NOT NULL) ";
-//                            "FOREIGN KEY(Genre_id) REFERENCES Genre(id))";
+                            "availability INTEGER NOT NULL, " +
+                            "FOREIGN KEY(Genre_id) REFERENCES Genre(Id) ";
 
             statement.execute(sqlStatement);
             System.out.println("DB Books created");
@@ -74,7 +74,7 @@ public class DBConnectionLibrary {
                 book.setYear( rs.getInt("year"));
                 book.setPublisher( rs.getString("publisher"));
                 book.setLanguage( rs.getString("language"));
-                book.setGenreId (rs.getInt("genre"));
+                book.setGenreId (rs.getInt("genreId"));
                 book.setAvailabilityId( rs.getInt("availability"));
                 System.out.println(book.toString());
             }
