@@ -41,6 +41,7 @@ public class LibraryStg23Main {
 
             menuEntry = scanner.nextInt();
 
+
             switch (menuEntry) {
                 case 1:
                   /*  Scanner sc= new Scanner(System.in);
@@ -71,17 +72,39 @@ public class LibraryStg23Main {
                     Books newBook = new Books();
                     System.out.println("Enter book's title");
                     newBook.setTitle(scanner.next());
+                    newBook.setTitle(scanner.nextLine());
+
                     System.out.println("Enter book's author");
                     newBook.setAuthor(scanner.next());
+                    newBook.setAuthor(scanner.nextLine());
                     System.out.println("Enter book's year");
                     newBook.setYear(scanner.nextInt());
-                    {if ("2021".matches("((19|20)\\d\\d|2021)")) {
-                        newBook.setYear(scanner.nextInt());
-                    } else {
-                        System.out.println("Valid input is not a valid year");
-                    }}
+                   // {if ("2021".matches("((19|20)\\d\\d|2021)")) {
+                       // newBook.setYear(scanner.nextInt());
+
+                   // } else {
+                       // System.out.println("Valid input is not a valid year");
+                 //   }}
+                      boolean flag = false;
+                    String yearPattern = "((19|20)\\d\\d|2021)";
+                    do {
+
+                        // System.out.print("Input a year [4 digits]: ");
+                        String input = scanner.next();
+
+                        if (!input.matches(yearPattern)) {
+                            System.out.println("Invalid data!");
+                        }else {
+                            System.out.println("All is ok");
+                        }
+                        flag = input.matches(yearPattern);
+                    } while (!flag);
+                    System.out.println("Valid data");
+
+
                     System.out.println("Enter book's publisher");
                     newBook.setPublisher(scanner.next());
+                newBook.setPublisher(scanner.nextLine());
                     System.out.println("Enter book's language");
                     newBook.setLanguage(scanner.next());
                     System.out.println("Enter book's genreId");
