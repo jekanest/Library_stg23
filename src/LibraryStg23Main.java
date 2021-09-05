@@ -5,6 +5,8 @@ public class LibraryStg23Main {
 
     private static DBConnectionLibrary library;
 
+
+
     private String readString()
     {
         Scanner scanner = new Scanner(System.in);
@@ -14,6 +16,7 @@ public class LibraryStg23Main {
     public static void main(String[] args) {
 
         library = new DBConnectionLibrary();
+        //conn = DriverManager.getConnection(dbUrl);
 //    }
 //
 //    // MENU
@@ -40,8 +43,14 @@ public class LibraryStg23Main {
 
             switch (menuEntry) {
                 case 1:
-                    // retrieve from Database instead
-                   // library.getTitle();
+                  /*  Scanner sc= new Scanner(System.in);
+                    String answer = sc.next();
+                    while()
+                    {
+                        System.out.println();
+                        answer = sc.next();
+                    }*/
+
                     break;
                 case 2:
                     // retrieve from Database instead
@@ -66,6 +75,11 @@ public class LibraryStg23Main {
                     newBook.setAuthor(scanner.next());
                     System.out.println("Enter book's year");
                     newBook.setYear(scanner.nextInt());
+                    {if ("2021".matches("((19|20)\\d\\d|2021)")) {
+                        newBook.setYear(scanner.nextInt());
+                    } else {
+                        System.out.println("Valid input is not a valid year");
+                    }}
                     System.out.println("Enter book's publisher");
                     newBook.setPublisher(scanner.next());
                     System.out.println("Enter book's language");
@@ -81,9 +95,11 @@ public class LibraryStg23Main {
 //                addNewBook(scanner, BookList);
                     break;
                 case 6:
-                    // Remove book to database
-//                removeBook(scanner, BookList);
-                    break;
+              /*      Statement statement = conn.createStatement();
+                   sqlStatement = "DELETE FROM books" +
+                            " WHERE id = 0";
+                    statement.execute(sqlStatement);
+                    break*/
                 case 7:
                     // Change availability status
 //                changeStatusBook(scanner, BookList);
