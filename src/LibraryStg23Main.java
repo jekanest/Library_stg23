@@ -77,7 +77,16 @@ public class LibraryStg23Main {
                     break;
                 case 4:
 //                      showListOfBooks(heroList);
-//                library.getBookList();
+
+                   /* private static void listOfBooks (String[] bookList)
+                {
+                    Books newBook = new Books();
+                    //System.out.println("======== Book LIST +++++++++");
+                    for (String newBook : bookList) {
+                        System.out.println(bookList);
+                    }
+                }
+                library.getBooks();*/
                     break;
                 case 5:
 
