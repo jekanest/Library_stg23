@@ -19,7 +19,7 @@ public class DBConnectionLibrary {
             Statement statement = conn.createStatement();
             String sqlStatement =
                     "CREATE TABLE IF NOT EXISTS Books" +
-                            " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                            " (id INTEGER PRIMARY KEY AUTOINCREMENT ," +
                             "title TEXT NOT NULL, " +
                             "author TEXT NOT NULL, " +
                             "year INTEGER NOT NULL, " +
@@ -27,7 +27,7 @@ public class DBConnectionLibrary {
                             "language TEXT NOT NULL, " +
                             "genreId TEXT NOT NULL, " +
                             "availability INTEGER NOT NULL, " +
-                            "FOREIGN KEY(Genre_id) REFERENCES Genre(Id) ";
+                            "FOREIGN KEY(Genre_id) REFERENCES Genre(Id)) ";
 
             statement.execute(sqlStatement);
             System.out.println("DB Books created");
