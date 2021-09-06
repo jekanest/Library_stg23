@@ -25,26 +25,27 @@ public class DBConnectionLibrary {
                             "year INTEGER NOT NULL, " +
                             "publisher TEXT NOT NULL, " +
                             "language TEXT NOT NULL, " +
-                            "genreId TEXT NOT NULL, " +
-                            "availability INTEGER NOT NULL, " +
-                            "FOREIGN KEY(Genre_id) REFERENCES Genre(Id)) ";
+                            "genreId INTEGER NOT NULL, " +
+                            "availability INTEGER NOT NULL ) ";
+
+                           //"FOREIGN KEY(Genre_id) REFERENCES Genre(Id)) ";
 
             statement.execute(sqlStatement);
             System.out.println("DB Books created");
 
             sqlStatement =
                     "CREATE TABLE IF NOT EXISTS Genre" +
-                            " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                            "genre TEXT NOT NULL) ";
+                            " (genreId INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "genre TEXT NOT NULL ) ";
 
             statement.execute(sqlStatement);
             System.out.println("DB Genre created");
 
             sqlStatement =
                     "CREATE TABLE IF NOT EXISTS books_genres" +
-                            " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                            " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                             "bookId INTEGER NOT NULL, " +
-                            "genreId INTEGER NOT NULL) ";
+                            "genreId INTEGER NOT NULL ) ";
 
             statement.execute(sqlStatement);
             System.out.println("DB books_genres created");
@@ -66,7 +67,7 @@ public class DBConnectionLibrary {
 
             while ( rs.next() ) {
 
-                // Create new Hero object
+
                 Books book = new Books();
                 book.setId( rs.getInt("id") );
                 book.setTitle( rs.getString("title"));

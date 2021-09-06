@@ -1,5 +1,7 @@
 public class Books {
 
+    private static DBConnectionLibrary library;
+
     private int Id, genreId, year, availabilityId;
     private String Title, Author, language, publisher;
 

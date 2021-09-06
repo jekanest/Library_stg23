@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.AbstractList;
 
 public class LibraryStg23Main {
 
@@ -44,15 +46,25 @@ public class LibraryStg23Main {
 
             switch (menuEntry) {
                 case 1:
-                  /*  Scanner sc= new Scanner(System.in);
-                    String answer = sc.next();
-                    while()
-                    {
-                        System.out.println();
-                        answer = sc.next();
-                    }*/
+                    ArrayList<Books> bookList = new ArrayList<Books>();
+                 //  String[] strings = {ArrayList<Books> bookList};
+                    //public void findBookByTitle(String bookTitle) {
+                    Connection conn = null;
+                    try {
+                        Statement statement = conn.createStatement();
+                        String sqlStatement = "SELECT * FROM Books WHERE title = '" + "title" + "';";
 
-                    break;
+                        ResultSet res = statement.executeQuery(sqlStatement);
+                        while (res.next()){
+                            System.out.println(res.getString("title") + "");
+
+                        }
+                    } catch (SQLException exception) {
+                        System.out.println("Sorry, no match");
+                    }
+
+
+                break;
                 case 2:
                     // retrieve from Database instead
 //                library.getAuthor();
