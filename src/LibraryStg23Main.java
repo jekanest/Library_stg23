@@ -2,137 +2,110 @@ import java.util.Scanner;
 import java.sql.*;
 
 public class LibraryStg23Main {
-
     private static DBConnectionLibrary library;
-
-
-
-    private String readString()
-    {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
 
     public static void main(String[] args) {
 
         library = new DBConnectionLibrary();
-        //conn = DriverManager.getConnection(dbUrl);
-//    }
-//
-//    // MENU
-//    static private void showMenu(String[] bookList) {
+
+        String[] BooksList = {};
+        showMenu(BooksList);
+
+    }
+
+    static private void showMenu( String[] BooksList) {
+
         int menuEntry;
         Scanner scanner = new Scanner(System.in);
 
-
         do {
             System.out.println("Welcome!");
-            System.out.println("Please select what to do:");
-            System.out.println("1 - Please enter Title");
-            System.out.println("2 - Please enter Author");
-            System.out.println("3 - Please enter Genre");
-            System.out.println("4 - Show the list of all books ");
-            System.out.println("5 - Add new Book");
-            System.out.println("6 - Remove a book");
+            System.out.println("Please select what to do:");// OK
+            System.out.println("1 - Search book by Title");//OK
+            System.out.println("2 - Search book by Author");//OK
+            System.out.println("3 - Search book by Genre");// vai vajag?
+            System.out.println("4 - Show the list of all books in the library"); //OK
+            System.out.println("5 - Add new Book"); // OK
+            System.out.println("6 - Remove a book"); // OK
             System.out.println("7 - Change availability status");
-            System.out.println("8 - Show Top-3 book");
-            System.out.println("9 - Show last added book");
-            System.out.println("0 - EXIT MENU");
+            System.out.println("0 - EXIT MENU"); //OK
 
+            Books book = new Books();
             menuEntry = scanner.nextInt();
 
-
-            switch (menuEntry) {
+            switch (menuEntry){
                 case 1:
-                  /*  Scanner sc= new Scanner(System.in);
-                    String answer = sc.next();
-                    while()
-                    {
-                        System.out.println();
-                        answer = sc.next();
-                    }*/
+                    System.out.println("Please enter book's title");
+                    book.setTitle(scanner.next());
 
+                    library.findBookByTitle(book.getTitle());
                     break;
                 case 2:
-                    // retrieve from Database instead
-//                library.getAuthor();
-                 //   System.out.println();
-                    break;
+                    System.out.println("Please enter an author name");
+                    book.setAuthor(scanner.next());
 
+                    library.findBookByAuthor(book.getAuthor());
+                    break;
                 case 3:
-                    // retrieve from Database instead
-//                library.getGenre();
+                    System.out.println("Please enter a genre");
+                    book.setGenre(scanner.next());
+
+                    library.findBookByGenre(book.getGenre());
                     break;
                 case 4:
-//                      showListOfBooks(heroList);
-//                library.getBookList();
+                    Books allBooks = new Books();
+
+                    library.getBooks(allBooks);
                     break;
                 case 5:
-
                     Books newBook = new Books();
+                    System.out.println("Enter book's Id");
+                    newBook.setId(scanner.nextInt());
+                    scanner.nextLine();
                     System.out.println("Enter book's title");
-                    newBook.setTitle(scanner.next());
                     newBook.setTitle(scanner.nextLine());
-
                     System.out.println("Enter book's author");
-                    newBook.setAuthor(scanner.next());
                     newBook.setAuthor(scanner.nextLine());
                     System.out.println("Enter book's year");
-                    newBook.setYear(scanner.nextInt());
-                   // {if ("2021".matches("((19|20)\\d\\d|2021)")) {
-                       // newBook.setYear(scanner.nextInt());
 
-                   // } else {
-                       // System.out.println("Valid input is not a valid year");
-                 //   }}
-                      boolean flag = false;
+                    boolean flag = false;
                     String yearPattern = "((19|20)\\d\\d|2021)";
                     do {
-
-                        // System.out.print("Input a year [4 digits]: ");
-                        String input = scanner.next();
-
-                        if (!input.matches(yearPattern)) {
+                        String input = scanner.nextLine();
+                        flag = input.matches(yearPattern);
+                        if (!flag) {
                             System.out.println("Invalid data!");
                         }else {
-                            System.out.println("All is ok");
+                            newBook.setYear(Integer.parseInt(input));
                         }
-                        flag = input.matches(yearPattern);
                     } while (!flag);
-                    System.out.println("Valid data");
-
-
                     System.out.println("Enter book's publisher");
-                    newBook.setPublisher(scanner.next());
-                newBook.setPublisher(scanner.nextLine());
+                    newBook.setPublisher(scanner.nextLine());
                     System.out.println("Enter book's language");
-                    newBook.setLanguage(scanner.next());
+                    newBook.setLanguage(scanner.nextLine());
                     System.out.println("Enter book's genreId");
-                    newBook.setGenreId(scanner.nextInt());
+                    newBook.setGenre(scanner.nextLine());
                     System.out.println("Enter book's availability");
-                    newBook.setAvailabilityId(scanner.nextInt());
+                    newBook.setAvailability(scanner.nextLine());
 
                     library.createBook(newBook);
-
-                    // Add new book to database
-//                addNewBook(scanner, BookList);
+                    System.out.println("Book is added successfully");
                     break;
                 case 6:
-              /*      Statement statement = conn.createStatement();
-                   sqlStatement = "DELETE FROM books" +
-                            " WHERE id = 0";
-                    statement.execute(sqlStatement);
-                    break*/
+                    System.out.println("Please enter book's Id to remove");
+                    library.removeBook(scanner.nextInt());
+                    System.out.println("Book is removed successfully");
+                    break;
                 case 7:
-                    // Change availability status
-//                changeStatusBook(scanner, BookList);
+//                    System.out.println("Please enter book's title to change availability status");
+//                    book.setAvailability(scanner.next());
+//                    set.changeAvailability;
+////                    String bookToUpdateAvailability = in.next(); // or this option
+                    library.changeAvailability(book.getTitle(), book.getAvailability());
+//                    System.out.println("Availability status is changed successfully");
+
                     break;
-                case 8:
-//                top3Book(scanner, BookList);
-                    break;
-                case 9:
-//                lastAddedBook(scanner, BookList);
-                    break;
+
                 case 0:
                     System.out.println("EXIT MENU!");
                     break;

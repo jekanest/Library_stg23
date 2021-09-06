@@ -1,34 +1,50 @@
+import java.awt.print.Book;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 public class Books {
 
-    private int Id, genreId, year, availabilityId;
-    private String Title, Author, language, publisher;
+    private static DBConnectionLibrary library;
+
+    private int Id, year;
+    private String title, author, language, publisher, genre, availability;
 
     public Books() {
     }
 
-    public Books(int id, int genreId, int year, int availabilityId, String title, String author, String language, String publisher) {
-        Id = id;
-        this.genreId = genreId;
+    public Books(int id, int year, String title, String author, String language, String publisher, String genre, String availability) {
+        this.Id = id;
         this.year = year;
-        this.availabilityId = availabilityId;
-        Title = title;
-        Author = author;
+        this.title = title;
+        this.author = author;
         this.language = language;
         this.publisher = publisher;
+        this.genre = genre;
+        this.availability = availability;
     }
 
     @Override
     public String toString() {
         return "Books{" +
                 "Id=" + Id +
-                ", genreId=" + genreId +
                 ", year=" + year +
-                ", availabilityId=" + availabilityId +
-                ", Title='" + Title + '\'' +
-                ", Author='" + Author + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
                 ", language='" + language + '\'' +
                 ", publisher='" + publisher + '\'' +
+                ", genre='" + genre + '\'' +
+                ", availability='" + availability + '\'' +
                 '}';
+    }
+
+    public static DBConnectionLibrary getLibrary() {
+        return library;
+    }
+
+    public static void setLibrary(DBConnectionLibrary library) {
+        Books.library = library;
     }
 
     public int getId() {
@@ -36,15 +52,7 @@ public class Books {
     }
 
     public void setId(int id) {
-        Id = id;
-    }
-
-    public int getGenreId() {
-        return genreId;
-    }
-
-    public void setGenreId(int genreId) {
-        this.genreId = genreId;
+        this.Id = id;
     }
 
     public int getYear() {
@@ -55,28 +63,20 @@ public class Books {
         this.year = year;
     }
 
-    public int getAvailabilityId() {
-        return availabilityId;
-    }
-
-    public void setAvailabilityId(int availabilityId) {
-        this.availabilityId = availabilityId;
-    }
-
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
     public String getLanguage() {
@@ -93,6 +93,22 @@ public class Books {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
 }
 
