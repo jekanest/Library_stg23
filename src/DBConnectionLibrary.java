@@ -193,20 +193,15 @@ public class DBConnectionLibrary {
 
     public void changeAvailability(String title, String availability) {
 
-        PreparedStatement ps = null;
-        conn = null;
 
         try {
 
             System.out.println("Which part of information do you want to update: ");
-
-            Statement statement = conn.createStatement();
             String sqlStatement = "UPDATE Books " +
-                    "SET availability = '" + availability + "'  WHERE title LIKE '%" + title + "%'; ";
-            ps = conn.prepareStatement(sqlStatement);
-            ps.setString(1, availability);
-            ps.setString(2, title);
-            int i = ps.executeUpdate();
+                    "SET availability = '" + availability + "'  WHERE title LIKE '%" + title + "%'";
+            Statement statement = conn.createStatement();
+
+            int i = statement.executeUpdate(sqlStatement);
             if (i > 0) {
                 System.out.println("Availability is updated");
             } else {

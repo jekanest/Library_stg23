@@ -27,11 +27,12 @@ public class LibraryStg23Main {
             System.out.println("4 - Show the list of all books in the library"); //OK
             System.out.println("5 - Add new Book"); // OK
             System.out.println("6 - Remove a book"); // OK
-            System.out.println("7 - Change availability status");
+            System.out.println("7 - Change availability status");//ok
             System.out.println("0 - EXIT MENU"); //OK
 
             Books book = new Books();
             menuEntry = scanner.nextInt();
+            scanner.nextLine();
 
             switch (menuEntry){
                 case 1:
@@ -94,15 +95,16 @@ public class LibraryStg23Main {
                 case 6:
                     System.out.println("Please enter book's Id to remove");
                     library.removeBook(scanner.nextInt());
+                    scanner.nextLine();
                     System.out.println("Book is removed successfully");
                     break;
                 case 7:
-//                    System.out.println("Please enter book's title to change availability status");
-//                    book.setAvailability(scanner.next());
-//                    set.changeAvailability;
-////                    String bookToUpdateAvailability = in.next(); // or this option
-                    library.changeAvailability(book.getTitle(), book.getAvailability());
-//                    System.out.println("Availability status is changed successfully");
+                    System.out.println("Please enter book's title to change availability status");
+                    String title = scanner.nextLine();
+                    System.out.println("Please enter availability status");
+                    String state = scanner.nextLine();
+
+                    library.changeAvailability(title, state);
 
                     break;
 
